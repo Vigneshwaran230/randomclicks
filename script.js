@@ -2,11 +2,16 @@ const info = document.createElement("div");
 info.setAttribute("class", "userDetails");
 document.body.append(info);
 async function getimage() {
+  try{
   const data = await fetch("https://dog.ceo/api/breeds/image/random");
   const deatils = await data.json();
   console.log(deatils.message);
   document.querySelector(".userDetails").innerHTML='';
   createuserdeatails(deatils.message);
+  }
+  catch (err){
+    return "please use another API"
+  }
 }
 getimage();
 
